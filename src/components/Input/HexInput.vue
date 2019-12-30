@@ -2,11 +2,8 @@
 <template>
 <div id="hex-input-root">
   <!-- Gives a preview of the color  -->
-  <div id="col-preview" :style="{'background-color': hexCol}">Preview</div>
   <input id="hex-input" v-model="hexCol" placeholder="Select a color" @input="$emit('changeHex', hexCol)">
-  <!-- Add color to the parent element's array if valid -->
-  <div id="col-add">Add to history</div>
-  Color in child Element: {{ hexCol }}
+  <p>Hex-color in child element: {{ hexCol }}</p>
 </div>
 </template>
 
@@ -22,15 +19,6 @@ export default {
 
   props: {
     "col": String
-  },
-
-  // Check whether the color input is valid
-  computed: {
-    checkCol: function() {
-      let regExpCol = /^#[0-9a-f]{3,6}$/i;
-      let checkCol = this.hexCol;
-      return regExpCol.test(checkCol);
-    }
   }
 }
 </script>

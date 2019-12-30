@@ -6,9 +6,7 @@
   <input class="slider" type="range" min="0" max="255" v-model="colArr[1]" @change="$emit('changeRgb',colArrOut)">
   <!-- Slider for green -->
   <input class="slider" type="range" min="0" max="255" v-model="colArr[2]" @change="$emit('changeRgb',colArrOut)">
-
-  <p>Array of colors coming in: {{ colArrIn }}</p>
-  <p>String of colors going out: {{ colArrOut }}</p>
+  <p>Color in Rgb - Element: {{ colArr }}</p>
 </div>
 </template>
 
@@ -29,15 +27,6 @@ export default {
 
   props: {
     "col": String
-  },
-
-  methods: {
-    setRedColor: function() {
-      this.red = this.colArrIn[0];
-      this.$emit('changeRgb', this.colArrOut)
-    },
-    setGreenColor: function() {},
-    setBlueColor: function() {}
   },
 
   computed: {
