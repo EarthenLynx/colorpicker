@@ -1,7 +1,7 @@
 <template>
 <div id="app">
-  <hex-input :col="currentColor" @changeHex="currentColor = $event"></hex-input>
-  <!-- <rgb-input :col="currentColor"></rgb-input> -->
+  <rgb-input :col="currentColor" @changeRgb="currentColor=$event"></rgb-input>
+  <hex-input :col="currentColor" @changeHex="currentColor=$event"></hex-input>
   <app-buttons></app-buttons>
   <app-history :history="colorHistory"></app-history>
   Color in parent Element: {{ currentColor }}
@@ -14,7 +14,7 @@
 
 <script>
 import HexInput from './components/Input/HexInput.vue';
-// import RgbInput from './components/Input/RgbInput.vue'
+import RgbInput from './components/Input/RgbInput.vue'
 import AppButtons from './components/AppButtons.vue';
 import AppHistory from './components/AppHistory.vue';
 import {
@@ -27,18 +27,14 @@ export default {
   components: {
     AppButtons,
     AppHistory,
-    // RgbInput,
+    RgbInput,
     HexInput
   },
-
-  // computed: {
-  //
-  // },
 
   data: function() {
     return {
       colorIndex: 0,
-      currentColor: 'No Color', // => This can either be hex OR Rgb
+      currentColor: '#2f2f2f', // => This can either be hex OR Rgb
       savedColors: [],
       colorHistory: [],
     }
@@ -64,7 +60,7 @@ export default {
   // These are the variables that are passed to the object. Based on whether the
   // input variable is hex or not, values will be evaluated
   computed: {
-    // Calculate rgb value => Returns Array
+    // Calculate rgb value => Returns a string
     colRgb: function() {
       let vm = this;
       if (hexCheck(vm.currentColor)) {

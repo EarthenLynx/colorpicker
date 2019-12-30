@@ -15,7 +15,8 @@ export function rgbToHex(r, g, b) {
 export function rgbStrToArr(rgbStr) {
   let rgbCols = rgbStr.slice(4, (rgbStr.length - 1));
   let rgbArr = rgbCols.split(',');
-  return rgbArr;
+  let rgbArrNum = rgbArr.map(Number);
+  return rgbArrNum;
 }
 
 // 3) Convert rgb arr to rgb string

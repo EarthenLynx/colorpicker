@@ -1,9 +1,9 @@
 <!-- Don't touch, it works -->
 <template>
-<div id="app-input-root">
+<div id="hex-input-root">
   <!-- Gives a preview of the color  -->
   <div id="col-preview" :style="{'background-color': hexCol}">Preview</div>
-  <input id="col-input" v-model="hexCol" placeholder="Select a color" @input="$emit('changeHex', hexCol)">
+  <input id="hex-input" v-model="hexCol" placeholder="Select a color" @input="$emit('changeHex', hexCol)">
   <!-- Add color to the parent element's array if valid -->
   <div id="col-add">Add to history</div>
   Color in child Element: {{ hexCol }}
@@ -24,8 +24,6 @@ export default {
     "col": String
   },
 
-  methods: {},
-
   // Check whether the color input is valid
   computed: {
     checkCol: function() {
@@ -38,7 +36,7 @@ export default {
 </script>
 
 <style scoped>
-#app-input-root {
+/* #hex-input-root {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -58,7 +56,7 @@ export default {
   justify-content: center;
 }
 
-#col-input {
+#hex-input {
   height: 42px;
   width: 216px;
   padding: 12px 24px;
@@ -86,5 +84,5 @@ export default {
   border-bottom-right-radius: 36px;
   border: 3px groove #000;
   border-left: none;
-}
+} */
 </style>
