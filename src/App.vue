@@ -13,10 +13,15 @@
 </template>
 
 <script>
-import HexInput from './components/Input/HexInput.vue'
+import HexInput from './components/Input/HexInput.vue';
 // import RgbInput from './components/Input/RgbInput.vue'
-import AppButtons from './components/AppButtons.vue'
-import AppHistory from './components/AppHistory.vue'
+import AppButtons from './components/AppButtons.vue';
+import AppHistory from './components/AppHistory.vue';
+import {
+  hexCheck,
+  rgbToHex,
+  hexToRgb
+} from './assets/appColorFunctions.js';
 
 export default {
   components: {
@@ -54,28 +59,6 @@ export default {
         rgb: this.colRgb
       });
     },
-    // Define the checks for the colors
-    // By rules of the app: If the color is not hex, it must be rgb
-    hexCheck: function(color) {
-      let regExpHex = /^#[0-9a-f]{3,6}$/i;
-      return regExpHex.test(color);
-    },
-
-    // Convert rgb value to hex
-    rgbToHex: function(r, g, b) {
-      return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
-    },
-
-    // Convert hex value to rgb
-    hexToRgb: function(hex) {
-      // Change the hex value into an integer
-      let hexInt = parseInt(hex.slice(1, hex.length), 16);
-      // Convert each of the hex into decimals, put these into an array
-      let rgbArr = [(hexInt >> 16) & 255, (hexInt >> 8) & 255, hexInt & 255]
-      return rgbArr;
-      // Source: https://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb#5624139
-      // Thanks at xameeramir for the explicit answer
-    }
   },
 
   // These are the variables that are passed to the object. Based on whether the
@@ -84,8 +67,8 @@ export default {
     // Calculate rgb value => Returns Array
     colRgb: function() {
       let vm = this;
-      if (vm.hexCheck(vm.currentColor)) {
-        return vm.hexToRgb(vm.currentColor);
+      if (hexCheck(vm.currentColor)) {
+        return hexToRgb(vm.currentColor);
       } else {
         return vm.currentColor;
       }
@@ -94,8 +77,8 @@ export default {
     // Calculate hex value => Returns String
     colHex: function() {
       let vm = this;
-      if (!vm.hexCheck(vm.currentColor)) {
-        return vm.rgbToHex(vm.currentColor);
+      if (!hexCheck(vm.currentColor)) {
+        return rgbToHex(vm.currentColor);
       } else {
         return vm.currentColor;
       }
