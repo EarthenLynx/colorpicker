@@ -1,10 +1,18 @@
 /*
 * Methods for RGB - Values
 * Includes:
-* 1) Convert rgb values to hex values. Accepts 3 vars
-* 2) Convert rgb String into an array that can be worked with.
-* 3) Convert Rgb Array into a String that's readable by the app.
+* 1) Logical check whether color is rgb - formatted
+* 2) Convert rgb values to hex values. Accepts 3 vars
+* 3) Convert rgb String into an array that can be worked with.
+* 4) Convert Rgb Array into a String that's readable by the app.
 */
+
+// 1) Check if string is rgb - format
+export function rgbCheck(color) {
+  // Source for RegExp: https://gist.github.com/sethlopezme/d072b945969a3cc2cc11
+  let regExpRgb =  /^rgb\((0|255|25[0-4]|2[0-4]\d|1\d\d|0?\d?\d),(0|255|25[0-4]|2[0-4]\d|1\d\d|0?\d?\d),(0|255|25[0-4]|2[0-4]\d|1\d\d|0?\d?\d)\)$/;
+  return regExpRgb.test(color);
+}
 
 // 1) Convert rgb strings to hex string
 export function rgbToHex(r, g, b) {
