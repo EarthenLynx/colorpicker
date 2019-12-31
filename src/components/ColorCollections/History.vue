@@ -2,7 +2,7 @@
 <div id="history-root">
   <transition-group class="history-container" name="list-complete" tag="div">
     <div v-for="col in history" :key="col" class="card list-complete-item">
-      <div @click="col.show = !col.show">
+      <div @click="col.show = !col.show" :class="{'card-expanded': col.show}">
         <div class="card-col-preview" :style="{'background-color': col.hex}"></div>
         <transition name="fade" tag="div">
           <div v-if="col.show" class="card-col-codes">
@@ -27,24 +27,31 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
+p {
+  margin: 6px 0;
+}
+
 #history-root {
   border: 1px solid rgba(115, 115, 115, 0.5);
   min-height: 260px;
   height: 100%;
   width: 90%;
   margin: auto;
-  overflow-x: auto;
   display: grid;
+  grid-gap: 50px;
 }
 
 .card {
-  -webkit-box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.5);
-  box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.5);
-  width: 160px;
   margin: 12px;
+  width: 160px;
   max-height: 180px;
   display: inline-grid;
+}
+
+.card-expanded {
+  -webkit-box-shadow: 0px 0px 6px 1px #f2f2f2;
+  -moz-box-shadow: 0px 0px 6px 1px #f2f2f2;
+  box-shadow: 0px 0px 6px 1px #f2f2f2;
 }
 
 .card-col-preview {
@@ -56,7 +63,7 @@ export default {
 
 .card-col-codes {
   padding: 0 12px 12px;
-  height: 180px;
+  max-height: 100px;
 }
 
 /* Transition animation for the group items */
@@ -73,7 +80,7 @@ export default {
 /* Transition animation for the fading elements */
 .fade-enter-active,
 .fade-leave-active {
-  transition: height 1s, opacity 0.25s;
+  transition: all 1s;
 }
 
 .fade-enter,
