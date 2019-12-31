@@ -113,7 +113,6 @@ button {
   font-size: 1rem;
 }
 
-
 button:focus {
   outline: none;
 }
@@ -130,7 +129,7 @@ button:hover {
 }
 
 .input-container {
-  max-height: 120px;
+  height: 240px;
   padding: 15px;
 }
 </style>

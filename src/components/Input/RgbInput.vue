@@ -32,7 +32,6 @@
       </div>
     </div>
   </div>
-  <p>Color in Rgb - Element: {{ colArr }}</p>
 </div>
 </template>
 

@@ -1,7 +1,6 @@
 <template >
 <div id="check-input-root">
   <button @click="validateColor()">Add color to history</button>
-  {{ valid }}
 </div>
 </template>
 
