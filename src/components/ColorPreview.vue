@@ -2,7 +2,7 @@
 <template>
 <div id="pre-input-root">
   <!-- Gives a preview of the color  -->
-  <div id="col-pre" :style="{'background-color': col}">Preview</div>
+  <div id="col-pre" :style="{'background-color': col}"></div>
 </div>
 </template>
 
@@ -17,53 +17,18 @@ export default {
 </script>
 
 <style scoped>
-/* #hex-input-root {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+#pre-input-root {
+  max-height: 200px;
+  width: 100%;
+  padding: 20px 0;
 }
 
-#col-preview {
-  height: 42px;
-  width: 108px;
-  padding: 12px 24px;
-  border-top-left-radius: 12px;
-  border-bottom-left-radius: 12px;
-  border: 3px groove #000;
-  border-right: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+#col-pre {
+  height: 160px;
+  width: 160px;
+  border-radius: 50%;
+  display: block;
+  margin: auto;
+  border: 3px solid #eee;
 }
-
-#hex-input {
-  height: 42px;
-  width: 216px;
-  padding: 12px 24px;
-  font-size: 2rem;
-  text-align: center;
-  border: none;
-  border-top: 3px groove #000;
-  border-bottom: 3px groove #000;
-}
-
-#col-input:focus {
-  outline: none;
-}
-
-#col-add {
-  height: 42px;
-  width: 108px;
-  padding: 12px 24px;
-  background-color: #f2f2f2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
-  border-top-right-radius: 36px;
-  border-bottom-right-radius: 36px;
-  border: 3px groove #000;
-  border-left: none;
-} */
 </style>

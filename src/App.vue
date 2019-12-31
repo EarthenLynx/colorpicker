@@ -4,13 +4,13 @@
     <hex-input v-if="hexInput" :col="currentColor" @changeHex="currentColor=$event"></hex-input>
     <rgb-input v-if="!hexInput" :col="currentColor" @changeRgb="currentColor=$event"></rgb-input>
   </div>
+  <color-preview :col="currentColor"></color-preview>
   <button @click="hexInput = !hexInput"> Toggle between inputs</button>
   <check-input :col="currentColor" @validColor="addColor()"></check-input>
   <history :history="colorHistory"></history>
   <br>
   <hr> <br>
   <h2>Test Zone for parent app</h2>
-  <color-preview :col="currentColor"></color-preview>
   <p>Current Color in parent Element: {{ currentColor }}</p>
   <p>Computed Rgb Color in parent: {{ colRgb }}</p>
   <p>Computed Hex Color in parent: {{ colHex }}</p>
@@ -103,23 +103,34 @@ export default {
 </script>
 
 <style>
+button {
+  padding: 12px 16px;
+  margin: 6px 12px;
+  background-color: #fff;
+  border: 2px solid #6f111f;
+  border-radius: 6px;
+  color: #121212;
+  font-size: 1rem;
+}
+
+
+button:focus {
+  outline: none;
+}
+
+button:hover {
+  border: 2px dashed #6f111f;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 
 .input-container {
-  max-height: 60px;
-  padding: 15px;
-}
-
-.collections-container {
-  box-shadow: 1px 1px 1px black;
   max-height: 120px;
-  padding: 20px 40px;
+  padding: 15px;
 }
 </style>
