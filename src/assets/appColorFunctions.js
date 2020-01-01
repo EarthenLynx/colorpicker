@@ -54,3 +54,15 @@ export function hexToRgb(hex) {
   let rgbStr = 'rgb(' + rgbArr + ')';
   return rgbStr;
 }
+
+/*
+* General methods for colors
+* 1) Create a random (hex) - color
+* 2) Create a random (hex) - color based on parameter
+*/
+
+// Create a random hex number
+export function createRandomColor() {
+  let rNum = Math.ceil(Math.random() * 16777215).toString(16);
+  return '#'.concat(rNum);
+}
