@@ -1,19 +1,13 @@
 <template>
 <div id="app">
+  <color-preview :colRgb="colRgb" :colHex="colHex" :col="currentColor"></color-preview>
   <div class="input-container">
-    <hex-input v-if="hexInput" :col="currentColor" @changeHex="currentColor=$event"></hex-input>
-    <rgb-input v-if="!hexInput" :col="currentColor" @changeRgb="currentColor=$event"></rgb-input>
+    <rgb-input :col="currentColor" @changeRgb="currentColor=$event"></rgb-input>
+    <hex-input :col="currentColor" @changeHex="currentColor=$event"></hex-input>
   </div>
-  <color-preview :col="currentColor"></color-preview>
-  <button @click="hexInput = !hexInput"> Toggle between inputs</button>
+  <random-input @changeRan="currentColor=$event"></random-input>
   <check-input :col="currentColor" @validColor="addColor()"></check-input>
   <history :history="colorHistory"></history>
-  <br>
-  <hr> <br>
-  <h2>Test Zone for parent app</h2>
-  <p>Current Color in parent Element: {{ currentColor }}</p>
-  <p>Computed Rgb Color in parent: {{ colRgb }}</p>
-  <p>Computed Hex Color in parent: {{ colHex }}</p>
   <app-buttons></app-buttons>
 </div>
 </template>
@@ -23,7 +17,8 @@
 import ColorPreview from './components/ColorPreview.vue';
 import CheckInput from './components/Input/CheckInput.vue';
 import HexInput from './components/Input/HexInput.vue';
-import RgbInput from './components/Input/RgbInput.vue'
+import RgbInput from './components/Input/RgbInput.vue';
+import RandomInput from './components/Input/RandomInput.vue';
 import AppButtons from './components/AppButtons.vue';
 import History from './components/ColorCollections/History.vue';
 
@@ -42,12 +37,12 @@ export default {
     AppButtons,
     History,
     RgbInput,
-    HexInput
+    HexInput,
+    RandomInput
   },
 
   data: function() {
     return {
-      hexInput: true,
       colorIndex: 0,
       currentColor: '', // => This can either be hex OR Rgb
       savedColors: [],
@@ -111,6 +106,7 @@ button {
   border-radius: 6px;
   color: #121212;
   font-size: 1rem;
+  transition: all 0.2s
 }
 
 button:focus {
@@ -118,7 +114,9 @@ button:focus {
 }
 
 button:hover {
-  border: 2px dashed #6f111f;
+  color: #fff;
+  background-color: #6f111f;
+  transition: all 0.2s
 }
 
 #app {
@@ -129,7 +127,8 @@ button:hover {
 }
 
 .input-container {
-  height: 240px;
+  height: 220px;
   padding: 15px;
+  display: block;
 }
 </style>
