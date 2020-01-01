@@ -87,11 +87,15 @@ export default {
 </script>
 
 <style>
+#rgb-input-root {
+  height: 150px;
+}
+
 /* General styles for the sliders */
 
 .slider-container {
   width: 60%;
-  margin: 30px auto;
+  margin: 0 auto;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
