@@ -13,13 +13,17 @@
 </template>
 
 <script>
-// Import components
-import ColorPreview from './components/ColorPreview.vue';
-import CheckInput from './components/Input/CheckInput.vue';
+// Import Input components
 import HexInput from './components/Input/HexInput.vue';
 import RgbInput from './components/Input/RgbInput.vue';
 import RandomInput from './components/Input/RandomInput.vue';
+
+// Import functional button components
+import CheckInput from './components/Input/CheckInput.vue';
 import AppButtons from './components/AppButtons.vue';
+
+// Import other components
+import ColorPreview from './components/ColorPreview.vue';
 import History from './components/ColorCollections/History.vue';
 
 // Import color functions
@@ -32,13 +36,13 @@ import {
 
 export default {
   components: {
-    ColorPreview,
+    HexInput,
+    RgbInput,
+    RandomInput,
     CheckInput,
     AppButtons,
+    ColorPreview,
     History,
-    RgbInput,
-    HexInput,
-    RandomInput
   },
 
   data: function() {
