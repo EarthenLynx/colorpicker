@@ -4,7 +4,8 @@
 * 1) Logical check whether color is rgb - formatted
 * 2) Convert rgb values to hex values. Accepts 3 vars
 * 3) Convert rgb String into an array that can be worked with.
-* 4) Convert Rgb Array into a String that's readable by the app.
+* 4) Convert rgb Array into string thaz can be passed back
+* 5) Increase brightness of rgb array
 */
 
 // 1) Check if string is rgb - format
@@ -14,12 +15,12 @@ export function rgbCheck(color) {
   return regExpRgb.test(color);
 }
 
-// 1) Convert rgb strings to hex string
+// 2) Convert rgb strings to hex string
 export function rgbToHex(r, g, b) {
   return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
 }
 
-// 2) Convert rgb string to rgb arr
+// 3) Convert rgb string to rgb arr
 export function rgbStrToArr(rgbStr) {
   let rgbCols = rgbStr.slice(4, (rgbStr.length - 1));
   let rgbArr = rgbCols.split(',');
@@ -27,12 +28,22 @@ export function rgbStrToArr(rgbStr) {
   return rgbArrNum;
 }
 
-// 3) Convert rgb arr to rgb string
+// 4) Convert rgb arr to rgb string
 export function rgbArrToStr(rgbArr) {
   let rgbCols = rgbArr.join(',');
   let rgbStr = 'rgb(' + rgbCols + ')';
   return rgbStr;
 }
+
+// 5) Brightens the array by a relative percentage of its own value
+export function brightenRgbArr(rgbArr, percent) {
+  let newArr = [];
+  for (let i = 0; i < rgbArr.length; i++) {
+    newArr.push(Math.round(rgbArr[i] + (255 - rgbArr[i]) * percent / 100));
+  }
+  return newArr;
+}
+
 
 /*
 * Methods for hex - colors
@@ -58,7 +69,6 @@ export function hexToRgb(hex) {
 /*
 * General methods for colors
 * 1) Create a random (hex) - color
-* 2) Create a random (hex) - color based on parameter
 */
 
 // Create a random hex number
