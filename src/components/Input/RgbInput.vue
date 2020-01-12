@@ -87,14 +87,10 @@ export default {
 </script>
 
 <style>
-#rgb-input-root {
-  height: 150px;
-}
-
 /* General styles for the sliders */
 
 .slider-container {
-  width: 60%;
+  width: 98%;
   margin: 0 auto;
   display: flex;
   justify-content: space-around;
@@ -102,27 +98,39 @@ export default {
 
 }
 
-.slider-group:hover {
-  box-shadow: 0 0 5px 1px black;
-}
-
 .slider-group {
   margin: 12px;
-  height: 120px;
-  width: 175px;
+  height: 62.5px;
+  width: 30%;
   display: inline-block;
   border: 2px solid #f2f2f2;
   border-radius: 12px;
 }
 
+.slider-group:hover {
+  box-shadow: 0 0 5px 1px black;
+}
+
+/* media query for the slider group */
+@media (max-width: 985px) {
+  .slider-group {
+    margin: 12px;
+    height: 62.5px;
+    width: 90%;
+    display: inline-block;
+    border: 2px solid #f2f2f2;
+    border-radius: 12px;
+  }
+}
+
 .slider-head {
-  height: 95px;
+  height: 37.5px;
   width: 300px;
   border-radius: 12px;
 }
 
 .slider-label {
-  height: 95px;
+  height: 37.5px;
   width: 60%;
   margin: 0;
   float: left;
@@ -133,7 +141,7 @@ export default {
 
 input[type=text] {
   font-size: 1.4rem;
-  height: 95px;
+  height: 37.5px;
   width: 40%;
   border: none;
   text-align: center;
@@ -147,7 +155,7 @@ input[type=text]:focus {
 /* Specific styles for the slider (don't touch!) */
 input[type=range].slider {
   -webkit-appearance: none;
-  width: 175px;
+  width: 100%;
   margin: -0.3px 0;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;

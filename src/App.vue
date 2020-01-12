@@ -1,14 +1,27 @@
 <template>
 <div id="app">
-  <color-preview :colRgb="colRgb" :colHex="colHex" :col="currentColor"></color-preview>
-  <div class="input-container">
-    <rgb-input :col="currentColor" @changeRgb="currentColor=$event"></rgb-input>
-    <hex-input :col="currentColor" @changeHex="currentColor=$event"></hex-input>
+  <h1>Color picker</h1>
+  <div class="app-container">
+    <!-- Preview -->
+    <div class="preview-container">
+      <color-preview :colRgb="colRgb" :colHex="colHex" :col="currentColor"></color-preview>
+    </div>
+    <!-- Input -->
+    <div class="input-container">
+      <rgb-input :col="currentColor" @changeRgb="currentColor=$event"></rgb-input>
+      <hex-input :col="currentColor" @changeHex="currentColor=$event"></hex-input>
+      <decrease-brightness :col="currentColor" @darkenCol="currentColor=$event"></decrease-brightness>
+      <random-input @changeRan="currentColor=$event"></random-input>
+      <color-to-history :col="currentColor" @validColor="addColor()"></color-to-history>
+      <increase-brightness :col="currentColor" @brightenCol="currentColor=$event"></increase-brightness>
+    </div>
+    <!-- History -->
+    <div class="history-container">
+      <history :history="colorHistory"></history>
+    </div>
+
+    <app-buttons></app-buttons>
   </div>
-  <random-input @changeRan="currentColor=$event"></random-input>
-  <check-input :col="currentColor" @validColor="addColor()"></check-input>
-  <history :history="colorHistory"></history>
-  <app-buttons></app-buttons>
 </div>
 </template>
 
@@ -19,8 +32,10 @@ import RgbInput from './components/Input/RgbInput.vue';
 import RandomInput from './components/Input/RandomInput.vue';
 
 // Import functional button components
-import CheckInput from './components/Input/CheckInput.vue';
-import AppButtons from './components/AppButtons.vue';
+import ColorToHistory from './components/Buttons/ColorToHistory.vue';
+import AppButtons from './components/Buttons/AppButtons.vue';
+import IncreaseBrightness from './components/Buttons/IncreaseBrightness.vue';
+import DecreaseBrightness from './components/Buttons/DecreaseBrightness.vue';
 
 // Import other components
 import ColorPreview from './components/ColorPreview.vue';
@@ -39,9 +54,11 @@ export default {
     HexInput,
     RgbInput,
     RandomInput,
-    CheckInput,
+    ColorToHistory,
     AppButtons,
     ColorPreview,
+    IncreaseBrightness,
+    DecreaseBrightness,
     History,
   },
 
@@ -104,11 +121,12 @@ export default {
 <style>
 button {
   padding: 12px 16px;
-  margin: 6px 12px;
   background-color: #fff;
-  border: 2px solid #6f111f;
-  border-radius: 6px;
+  border: 2px solid #a1a1a1;
+  border-left: none;
+  border-right: none;
   color: #121212;
+  margin: 0 0 12px;
   font-size: 1rem;
   transition: all 0.2s
 }
@@ -119,7 +137,7 @@ button:focus {
 
 button:hover {
   color: #fff;
-  background-color: #6f111f;
+  background-color: #a1a1a1;
   transition: all 0.2s
 }
 
@@ -130,9 +148,10 @@ button:hover {
   text-align: center;
 }
 
-.input-container {
-  height: 220px;
-  padding: 15px;
-  display: block;
+.app-container {
+  width: 90%;
+  border-radius: 12px;
+  border: 3px solid #a2a2a2;
+  margin: auto;
 }
 </style>

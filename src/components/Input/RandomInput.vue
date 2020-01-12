@@ -1,7 +1,5 @@
 <template>
-<div id="random-root">
-  <button @click="randomColor()">Create random Color</button>
-</div>
+<button @click="randomColor()">Create random Color</button>
 </template>
 
 <script>
@@ -15,13 +13,10 @@ export default {
 
   methods: {
     randomColor: function() {
-      let ranCol = createRandomColor()
+      let ranCol = createRandomColor();
       this.$emit('changeRan', ranCol)
     }
   }
 
 }
 </script>
-
-<style>
-</style>

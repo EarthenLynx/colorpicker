@@ -1,7 +1,5 @@
-<template >
-<div id="check-input-root">
-  <button @click="validateColor()">Add color to history</button>
-</div>
+<template>
+<button @click="validateColor()">Add color to history</button>
 </template>
 
 <script>
@@ -32,7 +30,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>

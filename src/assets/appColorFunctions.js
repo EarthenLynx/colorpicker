@@ -39,7 +39,16 @@ export function rgbArrToStr(rgbArr) {
 export function brightenRgbArr(rgbArr, percent) {
   let newArr = [];
   for (let i = 0; i < rgbArr.length; i++) {
-    newArr.push(Math.round(rgbArr[i] + (255 - rgbArr[i]) * percent / 100));
+    newArr.push(Math.round(rgbArr[i] + (254 + (percent*2) - rgbArr[i]) * percent / 100));
+  }
+  return newArr;
+}
+
+// 6) Darkens the array by a relative percentage of its own value
+export function darkenRgbArr(rgbArr, percent) {
+  let newArr = [];
+  for (let i = 0; i < rgbArr.length; i++) {
+    newArr.push(Math.round(rgbArr[i] - ((percent*2) + rgbArr[i]) * percent / 100));
   }
   return newArr;
 }

@@ -2,8 +2,8 @@
 <div id="history-root">
   <transition-group class="history-container" name="list-complete" tag="div">
     <div v-for="col in history" :key="col" class="card list-complete-item">
-      <div @click="col.show = !col.show" :class="{'card-expanded': col.show}">
-        <div class="card-col-preview" :style="{'background-color': col.hex}"></div>
+      <div :class="{'card-expanded': col.show}">
+        <div @click="col.show = !col.show" class="card-col-preview" :style="{'background-color': col.hex}"></div>
         <transition name="fade" tag="div">
           <div v-if="col.show" class="card-col-codes">
             <p v-if="col.show">Hex-Code: {{ col.hex }}</p>
@@ -62,8 +62,14 @@ p {
 }
 
 .card-col-codes {
+  opacity: 0.8;
   padding: 0 12px 12px;
   max-height: 100px;
+  max-width: 134px;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid black;
+  border-top: none;
 }
 
 /* Transition animation for the group items */
@@ -74,7 +80,7 @@ p {
 .list-complete-enter,
 .list-complete-leave-to {
   opacity: 0;
-  transform: translateX(-100px);
+  transform: translateX(-10px);
 }
 
 /* Transition animation for the fading elements */
@@ -83,9 +89,12 @@ p {
   transition: all 1s;
 }
 
-.fade-enter,
+.fade-enter {
+  opacity: 0;
+  transform: translateY(-5px);
+}
+
 .fade-leave-to {
-  height: 0;
   opacity: 0;
 }
 </style>

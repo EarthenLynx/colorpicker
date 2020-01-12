@@ -1,9 +1,6 @@
 <!-- Don't touch, it works -->
 <template>
-<div id="hex-input-root">
-  <input id="hex-input" v-model="hexCol" placeholder="Select a color" @input="$emit('changeHex', hexCol)">
-  <!-- Gives a preview of the color  -->
-</div>
+<input id="hex-input" v-model="hexCol" placeholder="Hex - color Input" @input="$emit('changeHex', hexCol)">
 </template>
 
 <script>
@@ -23,29 +20,18 @@ export default {
 </script>
 
 <style scoped>
-#hex-input-root {
-  height: 60px;
+input {
+  display: block;
+  margin: auto;
+  font-size: 1.5rem;
+  border: 2px solid #a1a1a1;
+  border-bottom: none;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  padding: 12px;
 }
 
-input#hex-input {
-  padding: 12px 16px;
-  margin: 6px 12px;
-  background-color: #fff;
-  border: 2px solid #6f111f;
-  border-radius: 6px;
-  color: #121212;
-  font-size: 1rem;
-}
-
-input#hex-input:focus {
+input:focus {
   outline: none;
-}
-
-input#hex-input:hover {
-  border: 2px dashed #6f111f;
-}
-
-.text-container {
-  margin: 30px auto;
 }
 </style>
