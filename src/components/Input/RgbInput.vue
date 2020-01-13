@@ -3,33 +3,18 @@
   <!-- Slider for red -->
   <div class="slider-container">
     <div class="slider-group">
-      <div class="slider-group-head">
-        <label class="slider-label" for="red" :style="{'background-color': redCom}"></label>
-        <input class="slider-text" name="red" type="text" v-model="colArr[0]" @change="$emit('changeRgb',colArrOut)">
-      </div>
-      <div class="slider-group-body">
-        <input class="slider" type="range" min="0" max="255" v-model="colArr[0]" @change="$emit('changeRgb',colArrOut)">
-      </div>
+      <input class="slider" type="range" min="0" max="255" v-model="colArr[0]" @change="$emit('changeRgb',colArrOut)" :style="{'background': 'rgb(' + colArr[0] + ' , 0, 0'}">
+      <input class="slider-text" name="red" type="text" v-model="colArr[0]" @change="$emit('changeRgb',colArrOut)">
     </div>
     <!-- Slider for blue -->
     <div class="slider-group">
-      <div class="slider-group-head">
-        <label class="slider-label" for="green" :style="{'background-color': greenCom}"></label>
-        <input class="slider-text" type="text" v-model="colArr[1]" @change="$emit('changeRgb',colArrOut)">
-      </div>
-      <div class="slider-group-body">
-        <input class="slider" type="range" min="0" max="255" v-model="colArr[1]" @change="$emit('changeRgb',colArrOut)">
-      </div>
+      <input class="slider" type="range" min="0" max="255" v-model="colArr[1]" @change="$emit('changeRgb',colArrOut)" :style="{'background': 'rgb(0, ' + colArr[1] + ', 0)'}">
+      <input class="slider-text" type="text" v-model="colArr[1]" @change="$emit('changeRgb',colArrOut)">
     </div>
     <!-- Slider for green -->
     <div class="slider-group">
-      <div class="slider-group-head">
-        <label class="slider-label" for="blue" :style="{'background-color': blueCom}"></label>
-        <input class="slider-text" type="text" v-model="colArr[2]" @change="$emit('changeRgb',colArrOut)">
-      </div>
-      <div class="slider-group-body">
-        <input class="slider" type="range" min="0" max="255" v-model="colArr[2]" @change="$emit('changeRgb',colArrOut)">
-      </div>
+      <input class="slider" type="range" min="0" max="255" v-model="colArr[2]" @change="$emit('changeRgb',colArrOut)" :style="{'background': 'rgb(0, 0, ' + colArr[2] + ')'}">
+      <input class="slider-text" type="text" v-model="colArr[2]" @change="$emit('changeRgb',colArrOut)">
     </div>
   </div>
 </div>
@@ -95,57 +80,37 @@ export default {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-
 }
 
 .slider-group {
-  margin: 12px;
-  height: 62.5px;
+  margin: 12px 0 10px;
+  display: flex;
   width: 30%;
-  display: inline-block;
-  border: 2px solid #f2f2f2;
-  border-radius: 12px;
+  box-shadow: 0 0 5px 1px black;
+  border: 1px solid #2B292E;
 }
 
 .slider-group:hover {
-  box-shadow: 0 0 5px 1px black;
+  border: 1px dashed #fff;
 }
 
 /* media query for the slider group */
 @media (max-width: 985px) {
   .slider-group {
-    margin: 12px;
-    height: 62.5px;
     width: 90%;
-    display: inline-block;
-    border: 2px solid #f2f2f2;
-    border-radius: 12px;
   }
-}
-
-.slider-head {
-  height: 37.5px;
-  width: 300px;
-  border-radius: 12px;
-}
-
-.slider-label {
-  height: 37.5px;
-  width: 60%;
-  margin: 0;
-  float: left;
-  border-top-left-radius: 12px;
 }
 
 /* Specific styles for text inputs */
 
 input[type=text] {
-  font-size: 1.4rem;
-  height: 37.5px;
-  width: 40%;
-  border: none;
+  float: right;
+  width: 20%;
+  margin: 0;
+  height: 25px;
+  border: 0;
+  font-size: 1rem;
   text-align: center;
-  border-radius: 12px;
 }
 
 input[type=text]:focus {
@@ -155,10 +120,8 @@ input[type=text]:focus {
 /* Specific styles for the slider (don't touch!) */
 input[type=range].slider {
   -webkit-appearance: none;
-  width: 100%;
-  margin: -0.3px 0;
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
+  width: 80%;
+  margin: 0;
 }
 
 /* Height of the line element */
@@ -166,19 +129,13 @@ input[type=range].slider::-webkit-slider-runnable-track {
   width: 150px;
   height: 25px;
   cursor: pointer;
-  background: #f2f2f2;
   border: none;
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
 }
 
 input[type=range].slider::-moz-range-track {
   width: 150px;
   height: 25px;
   cursor: pointer;
-  background: #f2f2f2;
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
 }
 
 input[type=range].slider::-ms-track {
@@ -188,54 +145,39 @@ input[type=range].slider::-ms-track {
   background: transparent;
   border-color: transparent;
   color: transparent;
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
 }
 
 /* Sizes of the Pointer */
 input[type=range].slider::-webkit-slider-thumb {
-  height: 26px;
-  width: 26px;
-  background: rgba(115, 115, 115, 0.5);
+  height: 25px;
+  width: 13px;
+  background: #f2f2f2;
+  border: 1px solid #000;
   cursor: pointer;
   -webkit-appearance: none;
-  border-radius: 50%;
+  border-radius: 4px;
 }
 
 input[type=range].slider::-moz-range-thumb {
-  height: 26px;
-  width: 26px;
-  background: rgba(115, 115, 115, 0.5);
+  height: 25px;
+  width: 13px;
+  background: #f2f2f2;
+  border: 1px solid #000;
   cursor: pointer;
-  border-radius: 50%;
+  border-radius: 4px;
 }
 
 input[type=range].slider::-ms-thumb {
-  height: 26px;
-  width: 26px;
-  background: rgba(115, 115, 115, 0.5);
+  height: 25px;
+  width: 13px;
+  background: #f2f2f2;
+  border: 1px solid #000;
   cursor: pointer;
-  border-radius: 50%;
+  border-radius: 4px;
 }
 
 /* Slider Focus */
 input[type=range].slider:focus {
   outline: none;
-}
-
-input[type=range].slider:focus::-webkit-slider-runnable-track {
-  background: #ffffff;
-}
-
-input[type=range].slider::-ms-fill-upper {
-  background: #f2f2f2;
-}
-
-input[type=range].slider:focus::-ms-fill-lower {
-  background: #f2f2f2;
-}
-
-input[type=range].slider:focus::-ms-fill-upper {
-  background: #ffffff;
 }
 </style>
