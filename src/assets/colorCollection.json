@@ -1,0 +1,52 @@
+[{
+    "id": 1,
+    "name": "Anthrazite",
+    "hex": "#2B292E",
+    "rgb": "rgb(43,41,46)",
+    "tags": ["grey", "black", "anthrazite", "dark"],
+    "dark": true
+  }, {
+    "id": 2,
+    "name": "Steelblue",
+    "hex": "#4682B4",
+    "rgb": "rgb(70,130,180)",
+    "tags": ["blue", "steel", "steelblue"],
+    "dark": false
+  },
+  {
+    "id": 3,
+    "name": "Aero",
+    "hex": "#7CB9E8",
+    "rgb": "rgb(124,185,232)",
+    "tags": ["blue", "aero", "bright"],
+    "dark": false
+  }, {
+    "id": 4,
+    "name": "Chrome Yellow",
+    "hex": "#FFA700",
+    "rgb": "rgb(255,167,0)",
+    "tags": ["cyber", "yellow", "bright"],
+    "dark": false
+  }, {
+    "id": 5,
+    "name": "Deep Carmin",
+    "hex": "#AB274F",
+    "rgb": "rgb(171,39,79)",
+    "tags": ["deep", "carmine", "red", "royal", "stylish"],
+    "dark": true
+  }, {
+    "id": 6,
+    "name": "Dark Green",
+    "hex": "#013220",
+    "rgb": "rgb(1,50,32)",
+    "tags": ["dark", "green", "jungle"],
+    "dark": true
+  }, {
+    "id": 7,
+    "name": "Firebrick",
+    "hex": "#B22222",
+    "rgb": "rgb(171,39,79)",
+    "tags": ["fire", "brick", "red"],
+    "dark": true
+  }
+]

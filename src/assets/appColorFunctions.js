@@ -1,17 +1,17 @@
 /*
-* Methods for RGB - Values
-* Includes:
-* 1) Logical check whether color is rgb - formatted
-* 2) Convert rgb values to hex values. Accepts 3 vars
-* 3) Convert rgb String into an array that can be worked with.
-* 4) Convert rgb Array into string thaz can be passed back
-* 5) Increase brightness of rgb array
-*/
+ * Methods for RGB - Values
+ * Includes:
+ * 1) Logical check whether color is rgb - formatted
+ * 2) Convert rgb values to hex values. Accepts 3 vars
+ * 3) Convert rgb String into an array that can be worked with.
+ * 4) Convert rgb Array into string thaz can be passed back
+ * 5) Increase brightness of rgb array
+ */
 
 // 1) Check if string is rgb - format
 export function rgbCheck(color) {
   // Source for RegExp: https://gist.github.com/sethlopezme/d072b945969a3cc2cc11
-  let regExpRgb =  /^rgb\((0|255|25[0-4]|2[0-4]\d|1\d\d|0?\d?\d),(0|255|25[0-4]|2[0-4]\d|1\d\d|0?\d?\d),(0|255|25[0-4]|2[0-4]\d|1\d\d|0?\d?\d)\)$/;
+  let regExpRgb = /^rgb\((0|255|25[0-4]|2[0-4]\d|1\d\d|0?\d?\d),(0|255|25[0-4]|2[0-4]\d|1\d\d|0?\d?\d),(0|255|25[0-4]|2[0-4]\d|1\d\d|0?\d?\d)\)$/;
   return regExpRgb.test(color);
 }
 
@@ -39,7 +39,7 @@ export function rgbArrToStr(rgbArr) {
 export function brightenRgbArr(rgbArr, percent) {
   let newArr = [];
   for (let i = 0; i < rgbArr.length; i++) {
-    newArr.push(Math.round(rgbArr[i] + (254 + (percent*2) - rgbArr[i]) * percent / 100));
+    newArr.push(Math.round(rgbArr[i] + (254 + (percent * 2) - rgbArr[i]) * percent / 100));
   }
   return newArr;
 }
@@ -48,17 +48,17 @@ export function brightenRgbArr(rgbArr, percent) {
 export function darkenRgbArr(rgbArr, percent) {
   let newArr = [];
   for (let i = 0; i < rgbArr.length; i++) {
-    newArr.push(Math.round(rgbArr[i] - ((percent*2) + rgbArr[i]) * percent / 100));
+    newArr.push(Math.round(rgbArr[i] - ((percent * 2) + rgbArr[i]) * percent / 100));
   }
   return newArr;
 }
 
 
 /*
-* Methods for hex - colors
-* 1) Logical check for whether color is hex
-* 2) Convert hex color to rgb color
-*/
+ * Methods for hex - colors
+ * 1) Logical check for whether color is hex
+ * 2) Convert hex color to rgb color
+ */
 
 // 1) Check if string has hex - format
 export function hexCheck(color) {
@@ -76,12 +76,20 @@ export function hexToRgb(hex) {
 }
 
 /*
-* General methods for colors
-* 1) Create a random (hex) - color
-*/
+ * General methods for colors
+ * 1) Create a random (hex) - color
+ * 2) Check whether a rgb color is dark or bright
+ */
 
 // Create a random hex number
 export function createRandomColor() {
   let rNum = Math.ceil(Math.random() * 16777215).toString(16);
   return '#'.concat(rNum);
+}
+
+// Check for color darkness. Returns false of dark, true of bright
+export function checkForBrightness(arr) {
+  let sortedArr = arr.sort;
+  return (sortedArr[0] < 150 && sortedArr[1] < 80 && sortedArr[2] < 80) ?
+    false : true
 }

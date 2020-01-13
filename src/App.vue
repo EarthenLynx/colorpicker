@@ -13,14 +13,15 @@
       <decrease-brightness :col="currentColor" @darkenCol="currentColor=$event"></decrease-brightness>
       <random-input @changeRan="currentColor=$event"></random-input>
       <color-to-history :col="currentColor" @validColor="addColor()"></color-to-history>
+      <button @click="colorHistory=[]"><i class="material-icons">clear</i></button>
       <increase-brightness :col="currentColor" @brightenCol="currentColor=$event"></increase-brightness>
     </div>
+    <!-- Suggested colors -->
+    <suggested-colors></suggested-colors>
     <!-- History -->
     <div class="history-container">
       <history :history="colorHistory"></history>
     </div>
-
-    <app-buttons></app-buttons>
   </div>
 </div>
 </template>
@@ -33,13 +34,13 @@ import RandomInput from './components/Input/RandomInput.vue';
 
 // Import functional button components
 import ColorToHistory from './components/Buttons/ColorToHistory.vue';
-import AppButtons from './components/Buttons/AppButtons.vue';
 import IncreaseBrightness from './components/Buttons/IncreaseBrightness.vue';
 import DecreaseBrightness from './components/Buttons/DecreaseBrightness.vue';
 
 // Import other components
 import ColorPreview from './components/ColorPreview.vue';
 import History from './components/ColorCollections/History.vue';
+import SuggestedColors from './components/ColorCollections/SuggestedColors.vue'
 
 // Import color functions
 import {
@@ -55,10 +56,10 @@ export default {
     RgbInput,
     RandomInput,
     ColorToHistory,
-    AppButtons,
     ColorPreview,
     IncreaseBrightness,
     DecreaseBrightness,
+    SuggestedColors,
     History,
   },
 
@@ -120,14 +121,13 @@ export default {
 
 <style>
 button {
-  padding: 12px 16px;
+  padding: 12px 16px 8px;
   background-color: #fff;
   border: 2px solid #a1a1a1;
   border-left: none;
   border-right: none;
   color: #121212;
   margin: 0 0 12px;
-  font-size: 1rem;
   transition: all 0.2s
 }
 
