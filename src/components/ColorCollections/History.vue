@@ -57,7 +57,7 @@ p {
   margin: 12px;
   width: 160px;
   max-height: 180px;
-  display: inline-grid;
+  display: inline-block;
 }
 
 .card-expanded {

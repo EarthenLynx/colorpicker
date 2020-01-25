@@ -48,5 +48,40 @@
     "rgb": "rgb(171,39,79)",
     "tags": ["fire", "brick", "red"],
     "dark": true
+  }, {
+    "id": 8,
+    "name": "Navy",
+    "hex": "#000080",
+    "rgb": "rgb(0,0,128)",
+    "tags": ["blue", "navy", "dark"],
+    "dark": true
+  }, {
+    "id": 9,
+    "name": "Dark Blue",
+    "hex": "#00008B",
+    "rgb": "rgb(0,0,139)",
+    "tags": ["blue", "dark", "water", "ocean"],
+    "dark": true
+  }, {
+    "id": 10,
+    "name": "Medium Blue",
+    "hex": "#0000CD",
+    "rgb": "rgb(0,0,205)",
+    "tags": ["medium", "blue", "water", "ocean"],
+    "dark": true
+  }, {
+    "id": 11,
+    "name": "Teal",
+    "hex": "#008080",
+    "rgb": "rgb(0,128,128)",
+    "tags": ["teal", "blue", "green", "cyan"],
+    "dark": true
+  }, {
+    "id": 12,
+    "name": "Dark Cyan",
+    "hex": "#008B8B",
+    "rgb": "rgb(0,139,139)",
+    "tags": ["teal", "blue", "green", "dark", "cyan"],
+    "dark": true
   }
 ]

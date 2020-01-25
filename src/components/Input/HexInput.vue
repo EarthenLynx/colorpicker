@@ -29,6 +29,7 @@ input {
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
   padding: 12px;
+  width: 200px;
 }
 
 input:focus {
